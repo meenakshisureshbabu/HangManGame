@@ -1,0 +1,45 @@
+                                        VANISH MAN GAME(5 letter words)
+------------------------------------------------------------------------------------------------------------------------
+
+1. Two Player game - Player 1 Vs Computer (All words are 5 letter words and they will be randomly chosen)
+2. Totally there will be 6 chances to find the word.(Each 3 chances)
+3. There will be a hint displayed on the screen.
+4. There will be a display of man dancing at the beginning of the game.
+5. If there is any wrong guess, the Incorrect guess will be incremented and the hangman body parts will start disappearing. Slowly for each wrong guess, the stick hands and stick legs will disappear. After the 6 incorrect guesses, the hangman will be vanished and the game is over. 
+6. Then the game will be restarted again with the new word.
+7. If the letter guessed is right, then that letter will be showed up in all the blanks wherever it belongs to and the points will be incremented for the player(either computer or player).
+8. Whoever found the word first, that player is the winner.
+9. The player can reset the game if he wants to discontinue.
+10. If both the player didn't found the word, the game is tie and the game will be reset once again with the new word.
+
+
+Screen : 
+
+There will be a PLAY, RESET buttons on the top
+In the left side section, the stick man will be showed.
+In the right side sections the blanks will be shown and a hint also will be displayed for that word
+Alphabet keys will be shown on the right side and the users will be able to press the alphabet buttons 
+the number of incorrect guess will also be displayed on the screen
+
+
+HOW TO PLAY:
+
+-Player should press START button to start the play.
+-The player will start guessing the word by pressing any one alphabet key. As he presses, the letter will be printed on the black if the word contains that letter and the button
+he presses will be disabled.
+-If the player's letter is not in the word, then the incorrect guesses will be incremented and the computer takes the turn.
+- This process will continue till the word found or word not found.
+- If the final word is found , the winner will be the player who presses the last right letter.
+- The REST button can be pressed to re-start the game.
+
+
+JAVASCRIPT CODE:
+
+Prelist a set of 5 words(about 50 words)
+Each time when the player clicked the Start button, random word will be picked up from the list and saved in avariable and the hint corresponding to that word will be showed up in the screen.
+Once the player starts pressing the letter, the letter typed will be checked with saved word and filled in the blanks in the screen.
+Once all the guesses are done, the entire word will be displayed in the screen.
+    -If the letter was not found till all the guesses, then display the word on the screen and Alert "YOU LOSE - GAME OVER"
+    - If the letter was found by Computer's turn, then display the word ont he screen and Alert "YOU LOSE"
+    - If the letter was found by you, then display the word on the screen adn alert "YOU WON"
+After each "Game over/You Lose/You Won" alerts, ask the user whether to continue the game with new word or not.
