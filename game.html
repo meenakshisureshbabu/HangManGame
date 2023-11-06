@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="left-side-container">
+        <div class="heading">
+          <p class="heading-para">THE VANISHMAN GAME</p>
+          <p class="sub-heading-para">(5 letter words)</p>
+          <div class="buttons">
+            <button class="start" onclick="start()">START</button>
+            <button class="reset" onclick="reset()">RESET</button>
+          </div>
+        </div>
+
+        <div class="hangman-image-div">
+          <div class="hangman-wrapper">
+            <div class="head"></div>
+            <div class="body"></div>
+            <div class="leftarm"></div>
+            <div class="rightarm"></div>
+            <div class="leftleg"></div>
+            <div class="leftfoot"></div>
+            <div class="rightleg"></div>
+            <div class="rightfoot"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="right-side-container">
+        <div class="incorrect-guesses-div">
+          <h4>Incorrect Guesses: </h4>
+          <p id="incorrect_guess_no"></p>
+        </div>
+        <div class="list-div">
+          <ul class="guessing-word" id = "character-list">
+            <li class="letter"></li>
+            <li class="letter"></li>
+            <li class="letter"></li>
+            <li class="letter"></li>
+            <li class="letter"></li>
+          </ul>
+        </div>
+        <div class="hint-div">
+          <p class="hint-display-div" id="hint-display-div"></p>
+        </div>
+        <div class="keyboard-div">
+          <div class="alphabet-button-div">
+            <button id="A" class="keybutton" onclick="printAlphabet(this)">
+              A
+            </button>
+            <button id="B" class="keybutton" onclick="printAlphabet(this)">
+              B
+            </button>
+            <button id="C" class="keybutton" onclick="printAlphabet(this)">
+              C
+            </button>
+            <button id="D" class="keybutton" onclick="printAlphabet(this)">
+              D
+            </button>
+            <button id="E" class="keybutton" onclick="printAlphabet(this)">
+              E
+            </button>
+            <button id="F" class="keybutton" onclick="printAlphabet(this)">
+              F
+            </button>
+            <button id="G" class="keybutton" onclick="printAlphabet(this)">
+              G
+            </button>
+            <button id="H" class="keybutton" onclick="printAlphabet(this)">
+              H
+            </button>
+            <button id="I" class="keybutton" onclick="printAlphabet(this)">
+              I
+            </button>
+            <button id="J" class="keybutton" onclick="printAlphabet(this)">
+              J
+            </button>
+            <button id="K" class="keybutton" onclick="printAlphabet(this)">
+              K
+            </button>
+            <button id="L" class="keybutton" onclick="printAlphabet(this)">
+              L
+            </button>
+            <button id="M" class="keybutton" onclick="printAlphabet(this)">
+              M
+            </button>
+            <button id="N" class="keybutton" onclick="printAlphabet(this)">
+              N
+            </button>
+            <button id="O" class="keybutton" onclick="printAlphabet(this)">
+              O
+            </button>
+            <button id="P" class="keybutton" onclick="printAlphabet(this)">
+              P
+            </button>
+            <button id="Q" class="keybutton" onclick="printAlphabet(this)">
+              Q
+            </button>
+            <button id="R" class="keybutton" onclick="printAlphabet(this)">
+              R
+            </button>
+            <button id="S" class="keybutton" onclick="printAlphabet(this)">
+              S
+            </button>
+            <button id="T" class="keybutton" onclick="printAlphabet(this)">
+              T
+            </button>
+            <button id="U" class="keybutton" onclick="printAlphabet(this)">
+              U
+            </button>
+            <button id="V" class="keybutton" onclick="printAlphabet(this)">
+              V
+            </button>
+            <button id="W" class="keybutton" onclick="printAlphabet(this)">
+              W
+            </button>
+            <button id="X" class="keybutton" onclick="printAlphabet(this)">
+              X
+            </button>
+            <button id="Y" class="keybutton" onclick="printAlphabet(this)">
+              Y
+            </button>
+            <button id="Z" class="keybutton" onclick="printAlphabet(this)">
+              Z
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
