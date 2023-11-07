@@ -41,6 +41,8 @@ function start() {
   keybuttons.forEach((e) => {
     console.log(e.removeAttribute("disabled"));
   });
+  for(let cnt=0;cnt < li.length;cnt++)
+  li[cnt].textContent = "";
   let index = Math.floor(Math.random() * 5);
   console.log(index);
   challenge_word = words[index];
@@ -72,6 +74,12 @@ function callComputerTurn() {
   alert("Computer chose the alphabet : "+id);
   console.log(id);
   checkAlphabet(id,chararray);
+}
+
+function reset(){
+    incorrect_times = 0;
+    document.getElementById("incorrect_guess_no").innerHTML = "";
+    start();
 }
 
 function checkAlphabet(id,chararray){
