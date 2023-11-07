@@ -28,6 +28,14 @@ const hints = [
   "an apparition of a dead person which is believed to appear or become manifest to the living",
   "Work, especially hard physical work",
 ];
+const hangmanarray = [
+  "rightleg",
+  "leftleg",
+  "rightarm",
+  "leftarm",
+  "body",
+  "head",
+];
 
 let challenge_word;
 let incorrect_times = 0;
@@ -75,15 +83,14 @@ function callComputerTurn() {
 }
 
 function reset() {
-  if(confirm("Are you sure you want to reset?")){
-    alert("Please click Start button to play again!!")
+  if (confirm("Are you sure you want to reset?")) {
+    alert("Please click Start button to play again!!");
     incorrect_times = 0;
     document.getElementById("incorrect_guess_no").innerHTML = "";
     document.getElementById("hint-display-div").innerHTML = "";
     for (let cnt = 0; cnt < li.length; cnt++) li[cnt].textContent = "";
     onload();
-  }
-  else{
+  } else {
     return;
   }
   //start();
@@ -111,15 +118,20 @@ function checkAlphabet(id, chararray) {
     }
   } else {
     incorrect_times++;
-    console.log(incorrect_times);
+    //console.log(incorrect_times);
+
     alert("This alphabet is not in the word");
     if (incorrect_times <= 6) {
+      let hangmanelement = document.querySelector(
+        "." + hangmanarray[incorrect_times - 1]
+      );
+      hangmanelement.remove();
       document.getElementById("incorrect_guess_no").innerHTML =
         incorrect_times + "/6";
       document.getElementById(id).setAttribute("disabled", true);
     } else {
-      alert("You lose, GAME OVER");
-      console.log("CHANLLENGE WORD:" + chararray);
+      alert("GAME OVER");
+      //console.log("CHANLLENGE WORD:" + chararray);
       for (let cnt = 0; cnt < li.length; cnt++) {
         li[cnt].textContent = chararray[cnt];
       }
@@ -141,6 +153,11 @@ function printAlphabet(id) {
   alert("You pressed :" + id.id);
   let char_array = getCharacterArray();
   checkAlphabet(id.id, char_array);
-
-  setTimeout(callComputerTurn, 2000);
+  console.log("before the computer turn:"+incorrect_times);
+  if(incorrect_times<=6){
+    setTimeout(callComputerTurn, 2000);
+  }
+  else{
+    return;
+  }
 }
