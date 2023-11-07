@@ -41,8 +41,7 @@ function start() {
   keybuttons.forEach((e) => {
     console.log(e.removeAttribute("disabled"));
   });
-  for(let cnt=0;cnt < li.length;cnt++)
-  li[cnt].textContent = "";
+  for (let cnt = 0; cnt < li.length; cnt++) li[cnt].textContent = "";
   let index = Math.floor(Math.random() * 5);
   console.log(index);
   challenge_word = words[index];
@@ -70,19 +69,22 @@ function callComputerTurn() {
   let chararray = getCharacterArray();
   //console.log(chararray);
   let id = getrandomAlphabet();
-  alert("Computer chose the alphabet : "+id);
+  alert("Computer chose the alphabet : " + id);
   console.log(id);
-  checkAlphabet(id,chararray);
+  checkAlphabet(id, chararray);
 }
 
-function reset(){
-    incorrect_times = 0;
-    document.getElementById("incorrect_guess_no").innerHTML = "";
-    start();
+function reset() {
+  incorrect_times = 0;
+  document.getElementById("incorrect_guess_no").innerHTML = "";
+  document.getElementById("hint-display-div").innerHTML = "";
+  for (let cnt = 0; cnt < li.length; cnt++) li[cnt].textContent = "";
+  onload();
+  //start();
 }
 
-function checkAlphabet(id,chararray){
-    let i = 0;
+function checkAlphabet(id, chararray) {
+  let i = 0;
   if (chararray.includes(id)) {
     alert("Gotcha! This alphabet is in the word");
     while (i < li.length) {
@@ -111,8 +113,8 @@ function checkAlphabet(id,chararray){
       document.getElementById(id).setAttribute("disabled", true);
     } else {
       alert("You lose, GAME OVER");
-      console.log("CHANLLENGE WORD:"+chararray)
-      for(let cnt=0;cnt<li.length;cnt++){
+      console.log("CHANLLENGE WORD:" + chararray);
+      for (let cnt = 0; cnt < li.length; cnt++) {
         li[cnt].textContent = chararray[cnt];
       }
       const buttons = document.querySelectorAll(".keybutton");
@@ -130,9 +132,9 @@ function getCharacterArray() {
 function printAlphabet(id) {
   //alert(id.id);
   //alert(challenge_word);
-  alert("You pressed :"+id.id)
+  alert("You pressed :" + id.id);
   let char_array = getCharacterArray();
-  checkAlphabet(id.id,char_array);
-  
-  setTimeout(callComputerTurn,2000);
+  checkAlphabet(id.id, char_array);
+
+  setTimeout(callComputerTurn, 2000);
 }
