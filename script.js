@@ -132,7 +132,7 @@ function checkAlphabet(id, chararray, player) {
       human_correct_times++;
       player.setPoints(human_correct_times);
     } else {
-      if (pressedarray.includes(id)) {
+      if (document.getElementById(id).getAttribute("disabled") == "true") {
         console.log("INSIDE PRESSE")
         right_word--;
         return;
@@ -159,18 +159,22 @@ function checkAlphabet(id, chararray, player) {
         }
       }
     }
+    console.log("-----------------------------RIGHT WORD---------------------------"+right_word)
     if (right_word === 5) { //check for the complete word
       alert("*******************" + player.name + "WON*******************");
-      enableButtons();
+      for (let cnt = 0; cnt < li.length; cnt++) {
+        li[cnt].textContent = chararray[cnt];
+      }
+      disablebuttons();
       word_found = true;
-      reset();
+      //reset();
     }
   } else {
     incorrect_times++;
     //console.log(incorrect_times);
 
     alert("This alphabet is not in the word");
-    if (incorrect_times <= 6) {
+    if (incorrect_times < 6) {
       let hangmanelement = document.querySelector(
         "." + hangmanarray[incorrect_times - 1]
       );
@@ -203,7 +207,7 @@ function printAlphabet(id) {
   alert("You pressed :" + id.id);
   let char_array = getCharacterArray();
   checkAlphabet(id.id, char_array, human_player);
-  if (incorrect_times < 6 && !word_found) {
+  if (incorrect_times < 6 && !word_found && right_word != 5) {
     setTimeout(callComputerTurn, 2000);
   } else {
     return;
