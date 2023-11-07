@@ -174,16 +174,20 @@ function checkAlphabet(id, chararray, player) {
     //console.log(incorrect_times);
 
     alert("This alphabet is not in the word");
+    let hangmanelement = document.querySelector(
+      "." + hangmanarray[incorrect_times - 1]
+    );
     if (incorrect_times < 6) {
-      let hangmanelement = document.querySelector(
-        "." + hangmanarray[incorrect_times - 1]
-      );
+      
       hangmanelement.style.display = "none";
       document.getElementById("incorrect_guess_no").innerHTML =
         incorrect_times + "/6";
       document.getElementById(id).setAttribute("disabled", true);
     } else {
       alert("GAME OVER");
+      document.getElementById("incorrect_guess_no").innerHTML =
+        incorrect_times + "/6";
+        hangmanelement.style.display = "none";
       //console.log("CHANLLENGE WORD:" + chararray);
       for (let cnt = 0; cnt < li.length; cnt++) {
         li[cnt].textContent = chararray[cnt];
@@ -208,7 +212,7 @@ function printAlphabet(id) {
   let char_array = getCharacterArray();
   checkAlphabet(id.id, char_array, human_player);
   if (incorrect_times < 6 && !word_found && right_word != 5) {
-    setTimeout(callComputerTurn, 2000);
+    setTimeout(callComputerTurn, 1000);
   } else {
     return;
   }
