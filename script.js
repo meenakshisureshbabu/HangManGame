@@ -54,8 +54,15 @@ const human_player = new Player("YOU", 0);
 const comp_player = new Player("COMPUTER", 0);
 let pressedarray = [];
 let word_found = false;
+let hangmanelem;
+let right_word = 0;
 
 function start() {
+  for(let i=0;i<hangmanarray.length;i++){
+    console.log(document.getElementById(hangmanarray[i]).style.display = "block");
+  }
+
+  
   enableButtons();
   for (let cnt = 0; cnt < li.length; cnt++) li[cnt].textContent = "";
   let index = Math.floor(Math.random() * 5);
@@ -101,7 +108,8 @@ function reset() {
     document.getElementById("incorrect_guess_no").innerHTML = "";
     document.getElementById("hint-display-div").innerHTML = "";
     for (let cnt = 0; cnt < li.length; cnt++) li[cnt].textContent = "";
-    onload();
+    window.location.reload();
+    //remove the entire stick figure divs
   } else {
     return;
   }
@@ -118,12 +126,15 @@ function checkAlphabet(id, chararray, player) {
   let i = 0;
   pressedarray.push(id);
   if (chararray.includes(id)) {
-    console.log("HHHHHHHHHH" + human_correct_times);
+    right_word++;
+    console.log("HHHHHHHHHH" + right_word);
     if (player.name === "YOU") {
       human_correct_times++;
       player.setPoints(human_correct_times);
     } else {
       if (pressedarray.includes(id)) {
+        console.log("INSIDE PRESSE")
+        right_word--;
         return;
       } else {
         computer_correct_times++;
@@ -148,10 +159,11 @@ function checkAlphabet(id, chararray, player) {
         }
       }
     }
-    if (human_correct_times + computer_correct_times === 5) {
+    if (right_word === 5) { //check for the complete word
       alert("*******************" + player.name + "WON*******************");
       enableButtons();
       word_found = true;
+      reset();
     }
   } else {
     incorrect_times++;
@@ -162,7 +174,7 @@ function checkAlphabet(id, chararray, player) {
       let hangmanelement = document.querySelector(
         "." + hangmanarray[incorrect_times - 1]
       );
-      hangmanelement.remove();
+      hangmanelement.style.display = "none";
       document.getElementById("incorrect_guess_no").innerHTML =
         incorrect_times + "/6";
       document.getElementById(id).setAttribute("disabled", true);
