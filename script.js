@@ -15,14 +15,13 @@
 */
 
 class Player {
-  constructor(name,points) {
+  constructor(name, points) {
     this.name = name;
     this.points = points;
   }
-  setPoints(point){
+  setPoints(point) {
     this.points = point;
   }
-  
 }
 
 const words = ["GAMES", "LABEL", "EAGER", "GHOST", "LABOR"];
@@ -44,19 +43,20 @@ const hangmanarray = [
 
 let challenge_word;
 let incorrect_times = 0;
-let correct_times = 0;
+let human_correct_times = 0;
+let computer_correct_times = 0;
 let hint;
 let random_alphabet;
 let keybuttons = document.querySelectorAll(".keybutton");
 let list = document.getElementById("character-list");
 let li = document.querySelectorAll(".letter");
-const human_player = new Player("YOU",0);
-const comp_player = new Player("COMPUTER",0);
+const human_player = new Player("YOU", 0);
+const comp_player = new Player("COMPUTER", 0);
+let pressedarray = [];
+let word_found = false;
 
 function start() {
-  keybuttons.forEach((e) => {
-    console.log(e.removeAttribute("disabled"));
-  });
+  enableButtons();
   for (let cnt = 0; cnt < li.length; cnt++) li[cnt].textContent = "";
   let index = Math.floor(Math.random() * 5);
   console.log(index);
@@ -67,10 +67,14 @@ function start() {
   document.getElementById("hint-display-div").innerHTML = hint;
 }
 
-function onload() {
+function enableButtons() {
   keybuttons.forEach((e) => {
-    e.setAttribute("disabled", true);
+    console.log(e.removeAttribute("disabled"));
   });
+}
+
+function onload() {
+  disablebuttons();
 }
 
 function getrandomAlphabet() {
@@ -87,7 +91,7 @@ function callComputerTurn() {
   let id = getrandomAlphabet();
   alert("Computer chose the alphabet : " + id);
   console.log(id);
-  checkAlphabet(id, chararray,comp_player);
+  checkAlphabet(id, chararray, comp_player);
 }
 
 function reset() {
@@ -104,13 +108,29 @@ function reset() {
   //start();
 }
 
-function checkAlphabet(id, chararray,player) {
+function disablebuttons() {
+  keybuttons.forEach((button) => {
+    button.setAttribute("disabled", true);
+  });
+}
+
+function checkAlphabet(id, chararray, player) {
   let i = 0;
+  pressedarray.push(id);
   if (chararray.includes(id)) {
-    correct_times++;
-    console.log("HHHHHHHHHH"+correct_times);
-    player.setPoints(correct_times);
-    console.log("POINTS FOR "+player.name+":"+player.points);
+    console.log("HHHHHHHHHH" + human_correct_times);
+    if (player.name === "YOU") {
+      human_correct_times++;
+      player.setPoints(human_correct_times);
+    } else {
+      if (pressedarray.includes(id)) {
+        return;
+      } else {
+        computer_correct_times++;
+        player.setPoints(computer_correct_times);
+      }
+    }
+    console.log("POINTS FOR " + player.name + ":" + player.points);
     alert("Gotcha! This alphabet is in the word");
     while (i < li.length) {
       for (let j = 0; j < chararray.length; j++) {
@@ -127,6 +147,11 @@ function checkAlphabet(id, chararray,player) {
           i++;
         }
       }
+    }
+    if (human_correct_times + computer_correct_times === 5) {
+      alert("*******************" + player.name + "WON*******************");
+      enableButtons();
+      word_found = true;
     }
   } else {
     incorrect_times++;
@@ -147,10 +172,11 @@ function checkAlphabet(id, chararray,player) {
       for (let cnt = 0; cnt < li.length; cnt++) {
         li[cnt].textContent = chararray[cnt];
       }
-      const buttons = document.querySelectorAll(".keybutton");
-      buttons.forEach((button) => {
-        button.setAttribute("disabled", true);
-      });
+      // const buttons = document.querySelectorAll(".keybutton");
+      // buttons.forEach((button) => {
+      //   button.setAttribute("disabled", true);
+      // });
+      disablebuttons();
     }
   }
 }
@@ -164,12 +190,10 @@ function printAlphabet(id) {
   //alert(challenge_word);
   alert("You pressed :" + id.id);
   let char_array = getCharacterArray();
-  checkAlphabet(id.id, char_array,human_player);
-  console.log("before the computer turn:"+incorrect_times);
-  if(incorrect_times<=6){
+  checkAlphabet(id.id, char_array, human_player);
+  if (incorrect_times < 6 && !word_found) {
     setTimeout(callComputerTurn, 2000);
-  }
-  else{
+  } else {
     return;
   }
 }
