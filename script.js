@@ -65,11 +65,17 @@ function getrandomAlphabet() {
 }
 
 function callComputerTurn() {
+  alert("Its Computer's turn");
   let chararray = getCharacterArray();
-  console.log(chararray);
+  //console.log(chararray);
   let id = getrandomAlphabet();
+  alert("Computer chose the alphabet : "+id);
   console.log(id);
-  let i = 0;
+  checkAlphabet(id,chararray);
+}
+
+function checkAlphabet(id,chararray){
+    let i = 0;
   if (chararray.includes(id)) {
     while (i < li.length) {
       for (let j = 0; j < chararray.length; j++) {
@@ -102,8 +108,6 @@ function callComputerTurn() {
       });
     }
   }
-
-
 }
 
 function getCharacterArray() {
@@ -114,44 +118,6 @@ function printAlphabet(id) {
   alert(id.id);
   alert(challenge_word);
   let char_array = getCharacterArray();
-  //console.log(challenge_word);
-//   let list = document.getElementById("character-list");
-//   let li = document.querySelectorAll(".letter");
-
-  let i = 0;
-
-  if (char_array.includes(id.id)) {
-    while (i < li.length) {
-      for (let j = 0; j < char_array.length; j++) {
-        alert(li[i].textContent);
-        if (id.id === char_array[i] && li[i].textContent === "") {
-          alert("Inside true");
-          li[i].textContent = id.id;
-          document.getElementById(id.id).setAttribute("disabled", true);
-          i++;
-        } else if (li[i].textContent === "") {
-          li[i].textContent = "";
-          i++;
-        } else {
-          i++;
-        }
-      }
-    }
-  } else {
-    incorrect_times++;
-    console.log(incorrect_times);
-    if (incorrect_times <= 6) {
-      document.getElementById("incorrect_guess_no").innerHTML =
-        incorrect_times + "/6";
-      document.getElementById(id.id).setAttribute("disabled", true);
-    } else {
-      alert("You lose, GAME OVER");
-      const buttons = document.querySelectorAll(".keybutton");
-      buttons.forEach((button) => {
-        button.setAttribute("disabled", true);
-      });
-    }
-  }
-
+  checkAlphabet(id.id,char_array);
   callComputerTurn();
 }
