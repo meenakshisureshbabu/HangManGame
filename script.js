@@ -67,7 +67,6 @@ function getrandomAlphabet() {
 }
 
 function callComputerTurn() {
-  alert("Its Computer's turn");
   let chararray = getCharacterArray();
   //console.log(chararray);
   let id = getrandomAlphabet();
@@ -85,6 +84,7 @@ function reset(){
 function checkAlphabet(id,chararray){
     let i = 0;
   if (chararray.includes(id)) {
+    alert("Gotcha! This alphabet is in the word");
     while (i < li.length) {
       for (let j = 0; j < chararray.length; j++) {
         //alert(li[i].textContent);
@@ -104,6 +104,7 @@ function checkAlphabet(id,chararray){
   } else {
     incorrect_times++;
     console.log(incorrect_times);
+    alert("This alphabet is not in the word");
     if (incorrect_times <= 6) {
       document.getElementById("incorrect_guess_no").innerHTML =
         incorrect_times + "/6";
@@ -132,5 +133,6 @@ function printAlphabet(id) {
   alert("You pressed :"+id.id)
   let char_array = getCharacterArray();
   checkAlphabet(id.id,char_array);
-  setTimeout(callComputerTurn(),10000);
+  
+  setTimeout(callComputerTurn,2000);
 }
