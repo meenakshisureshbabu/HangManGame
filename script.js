@@ -33,8 +33,12 @@ let challenge_word;
 let incorrect_times = 0;
 let hint;
 let random_alphabet;
+let keybuttons = document.querySelectorAll(".keybutton");
 
 function start() {
+  keybuttons.forEach((e) => {
+    console.log(e.removeAttribute("disabled"));
+  });
   let index = Math.floor(Math.random() * 5);
   console.log(index);
   challenge_word = words[index];
@@ -44,11 +48,10 @@ function start() {
   document.getElementById("hint-display-div").innerHTML = hint;
 }
 
-function onload(){
-    let keybuttons = document.querySelectorAll(".keybutton");
-    keybuttons.forEach((e) => {
-        console.log(e.setAttribute("disabled",true));
-    })
+function onload() {
+  keybuttons.forEach((e) => {
+    e.setAttribute("disabled", true);
+  });
 }
 
 function getrandomAlphabet() {
@@ -59,13 +62,13 @@ function getrandomAlphabet() {
   return randomChar;
 }
 
-function callComputerTurn(){
-    let chararray = getCharacterArray();
-    console.log(chararray);
+function callComputerTurn() {
+  let chararray = getCharacterArray();
+  console.log(chararray);
 }
 
-function getCharacterArray(){
-    return Array.from(challenge_word)
+function getCharacterArray() {
+  return Array.from(challenge_word);
 }
 
 function printAlphabet(id) {
