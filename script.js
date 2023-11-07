@@ -79,9 +79,9 @@ function checkAlphabet(id,chararray){
   if (chararray.includes(id)) {
     while (i < li.length) {
       for (let j = 0; j < chararray.length; j++) {
-        alert(li[i].textContent);
+        //alert(li[i].textContent);
         if (id === chararray[i] && li[i].textContent === "") {
-          alert("Inside true");
+          //alert("Inside true");
           li[i].textContent = id;
           document.getElementById(id).setAttribute("disabled", true);
           i++;
@@ -102,6 +102,10 @@ function checkAlphabet(id,chararray){
       document.getElementById(id).setAttribute("disabled", true);
     } else {
       alert("You lose, GAME OVER");
+      console.log("CHANLLENGE WORD:"+chararray)
+      for(let cnt=0;cnt<li.length;cnt++){
+        li[cnt].textContent = chararray[cnt];
+      }
       const buttons = document.querySelectorAll(".keybutton");
       buttons.forEach((button) => {
         button.setAttribute("disabled", true);
@@ -115,9 +119,10 @@ function getCharacterArray() {
 }
 
 function printAlphabet(id) {
-  alert(id.id);
-  alert(challenge_word);
+  //alert(id.id);
+  //alert(challenge_word);
+  alert("You pressed :"+id.id)
   let char_array = getCharacterArray();
   checkAlphabet(id.id,char_array);
-  callComputerTurn();
+  setTimeout(callComputerTurn(),10000);
 }
