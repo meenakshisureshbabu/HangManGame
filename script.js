@@ -32,7 +32,41 @@ const hints = [
 let challenge_word;
 let incorrect_times = 0;
 let hint;
+let random_alphabet;
 
+function start() {
+  let index = Math.floor(Math.random() * 5);
+  console.log(index);
+  challenge_word = words[index];
+  hint = hints[index];
+  console.log(hint);
+  console.log(challenge_word);
+  document.getElementById("hint-display-div").innerHTML = hint;
+}
+
+function onload(){
+    let keybuttons = document.querySelectorAll(".keybutton");
+    keybuttons.forEach((e) => {
+        console.log(e.setAttribute("disabled",true));
+    })
+}
+
+function getrandomAlphabet() {
+  let randomNum = Math.floor(Math.random() * 26) + 97;
+  // Convert the number to a character using the ASCII code
+  let randomChar = String.fromCharCode(randomNum);
+  // Return the random letter
+  return randomChar;
+}
+
+function callComputerTurn(){
+    let chararray = getCharacterArray();
+    console.log(chararray);
+}
+
+function getCharacterArray(){
+    return Array.from(challenge_word)
+}
 
 function printAlphabet(id) {
   alert(id.id);
