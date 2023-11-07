@@ -15,9 +15,14 @@
 */
 
 class Player {
-  constructor(name) {
+  constructor(name,points) {
     this.name = name;
+    this.points = points;
   }
+  setPoints(point){
+    this.points = point;
+  }
+  
 }
 
 const words = ["GAMES", "LABEL", "EAGER", "GHOST", "LABOR"];
@@ -39,11 +44,14 @@ const hangmanarray = [
 
 let challenge_word;
 let incorrect_times = 0;
+let correct_times = 0;
 let hint;
 let random_alphabet;
 let keybuttons = document.querySelectorAll(".keybutton");
 let list = document.getElementById("character-list");
 let li = document.querySelectorAll(".letter");
+const human_player = new Player("YOU",0);
+const comp_player = new Player("COMPUTER",0);
 
 function start() {
   keybuttons.forEach((e) => {
@@ -79,7 +87,7 @@ function callComputerTurn() {
   let id = getrandomAlphabet();
   alert("Computer chose the alphabet : " + id);
   console.log(id);
-  checkAlphabet(id, chararray);
+  checkAlphabet(id, chararray,comp_player);
 }
 
 function reset() {
@@ -96,9 +104,13 @@ function reset() {
   //start();
 }
 
-function checkAlphabet(id, chararray) {
+function checkAlphabet(id, chararray,player) {
   let i = 0;
   if (chararray.includes(id)) {
+    correct_times++;
+    console.log("HHHHHHHHHH"+correct_times);
+    player.setPoints(correct_times);
+    console.log("POINTS FOR "+player.name+":"+player.points);
     alert("Gotcha! This alphabet is in the word");
     while (i < li.length) {
       for (let j = 0; j < chararray.length; j++) {
@@ -152,7 +164,7 @@ function printAlphabet(id) {
   //alert(challenge_word);
   alert("You pressed :" + id.id);
   let char_array = getCharacterArray();
-  checkAlphabet(id.id, char_array);
+  checkAlphabet(id.id, char_array,human_player);
   console.log("before the computer turn:"+incorrect_times);
   if(incorrect_times<=6){
     setTimeout(callComputerTurn, 2000);
