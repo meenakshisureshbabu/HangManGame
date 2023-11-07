@@ -18,25 +18,34 @@
           </div>
         </div>
 
-        <div class="hangman-image-div">
-          <div class="hangman-wrapper">
-            <div id ="head" class="head"></div>
-            <div id = "body" class="body"></div>
-            <div id = "leftarm" class="leftarm"></div>
-            <div id ="rightarm" class="rightarm"></div>
-            <div id = "leftleg" class="leftleg"></div>
-            <div id = "rightleg" class="rightleg"></div>
+        <div class="status">
+          <div class="score">
+            <h4>Your Score:</h4>
+            <p id="yourscore"></p>
+            <h4>Computer Score:</h4>
+            <p id="compscore"></p>
+          </div>
+
+          <div class="hangmanstickdiv">
+            <div class="hangman-wrapper">
+                <div id="head" class="head"></div>
+                <div id="body" class="body"></div>
+                <div id="leftarm" class="leftarm"></div>
+                <div id="rightarm" class="rightarm"></div>
+                <div id="leftleg" class="leftleg"></div>
+                <div id="rightleg" class="rightleg"></div>
+              </div>
           </div>
         </div>
       </div>
 
       <div class="right-side-container">
         <div class="incorrect-guesses-div">
-          <h4>Incorrect Guesses: </h4>
+          <h4>Incorrect Guesses:</h4>
           <p id="incorrect_guess_no"></p>
         </div>
         <div class="list-div">
-          <ul class="guessing-word" id = "character-list">
+          <ul class="guessing-word" id="character-list">
             <li class="letter"></li>
             <li class="letter"></li>
             <li class="letter"></li>

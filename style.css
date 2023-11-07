@@ -35,14 +35,15 @@
     margin-top: 10px;
 }
 
-.hangman-image-div{
+/* .hangman-image-div{
     border: solid black;
+    position: relative;
     display: flex;
     justify-content:center;
-    width: 50rem;
+    width: 50%;
     height: 25rem;
     margin: 2rem;
-}
+} */
 
 
 
@@ -148,8 +149,32 @@ li{
     height: 300px;
     display: block;
     position: relative;
-    margin-left: 15em;
+    margin-left: 10px;
     margin-top: 5em;
+    margin-right: 5em;
+}
+
+.status{
+    /* border: solid cyan; */
+    display: flex;
+    justify-content: space-between;
+    width: 700px;
+    height: 400px;
+}
+
+.score{
+    /* border: solid black; */
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+   width: 250px;
+   height: 150px;
+}
+
+.hangmanstickdiv{
+    /* border: solid blue; */
+    height: 400px;
+    width: 400px;
 }
 
 .guessing-word{

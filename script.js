@@ -22,6 +22,9 @@ class Player {
   setPoints(point) {
     this.points = point;
   }
+  getPoints() {
+    return this.points;
+  }
 }
 
 const words = ["GAMES", "LABEL", "EAGER", "GHOST", "LABOR"];
@@ -58,11 +61,12 @@ let hangmanelem;
 let right_word = 0;
 
 function start() {
-  for(let i=0;i<hangmanarray.length;i++){
-    console.log(document.getElementById(hangmanarray[i]).style.display = "block");
+  for (let i = 0; i < hangmanarray.length; i++) {
+    console.log(
+      (document.getElementById(hangmanarray[i]).style.display = "block")
+    );
   }
 
-  
   enableButtons();
   for (let cnt = 0; cnt < li.length; cnt++) li[cnt].textContent = "";
   let index = Math.floor(Math.random() * 5);
@@ -126,20 +130,20 @@ function checkAlphabet(id, chararray, player) {
   let i = 0;
   pressedarray.push(id);
   if (chararray.includes(id)) {
-    right_word++;
     console.log("HHHHHHHHHH" + right_word);
     if (player.name === "YOU") {
-      human_correct_times++;
-      player.setPoints(human_correct_times);
+      //human_correct_times++;
+      //player.setPoints(human_correct_times);
     } else {
       if (document.getElementById(id).getAttribute("disabled") == "true") {
-        console.log("INSIDE PRESSE")
+        console.log("INSIDE PRESSE");
         right_word--;
         return;
-      } else {
-        computer_correct_times++;
-        player.setPoints(computer_correct_times);
       }
+      // } else {
+      //   computer_correct_times++;
+      //   player.setPoints(computer_correct_times);
+      // }
     }
     console.log("POINTS FOR " + player.name + ":" + player.points);
     alert("Gotcha! This alphabet is in the word");
@@ -147,6 +151,7 @@ function checkAlphabet(id, chararray, player) {
       for (let j = 0; j < chararray.length; j++) {
         //alert(li[i].textContent);
         if (id === chararray[i] && li[i].textContent === "") {
+          right_word++;
           //alert("Inside true");
           li[i].textContent = id;
           document.getElementById(id).setAttribute("disabled", true);
@@ -159,9 +164,23 @@ function checkAlphabet(id, chararray, player) {
         }
       }
     }
-    console.log("-----------------------------RIGHT WORD---------------------------"+right_word)
-    if (right_word === 5) { //check for the complete word
+    console.log(
+      "-----------------------------RIGHT WORD---------------------------" +
+        right_word
+    );
+    if (right_word === 5) {
+      //check for the complete word
       alert("*******************" + player.name + "WON*******************");
+      if (player.name === "YOU") {
+        human_correct_times++;
+        player.setPoints(human_correct_times);
+      } else {
+        computer_correct_times++;
+        player.setPoints(computer_correct_times);
+      }
+      console.log(
+        "PLAYER POINTS::::::::::::::::::::::::::::::" + player.getPoints()
+      );
       for (let cnt = 0; cnt < li.length; cnt++) {
         li[cnt].textContent = chararray[cnt];
       }
@@ -178,7 +197,6 @@ function checkAlphabet(id, chararray, player) {
       "." + hangmanarray[incorrect_times - 1]
     );
     if (incorrect_times < 6) {
-      
       hangmanelement.style.display = "none";
       document.getElementById("incorrect_guess_no").innerHTML =
         incorrect_times + "/6";
@@ -187,7 +205,7 @@ function checkAlphabet(id, chararray, player) {
       alert("GAME OVER");
       document.getElementById("incorrect_guess_no").innerHTML =
         incorrect_times + "/6";
-        hangmanelement.style.display = "none";
+      hangmanelement.style.display = "none";
       //console.log("CHANLLENGE WORD:" + chararray);
       for (let cnt = 0; cnt < li.length; cnt++) {
         li[cnt].textContent = chararray[cnt];
