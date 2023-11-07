@@ -14,34 +14,68 @@
 9. If both the player didn't found the word, the game is tie and the game will be reset once again with the new word.
 */
 
-class Player{
-    constructor(name){
-        this.name=name;
-    }
+class Player {
+  constructor(name) {
+    this.name = name;
+  }
 }
 
-
-const words = ["GAMES", "LABEL","EAGER","GHOST","LABOR"];
+const words = ["GAMES", "LABEL", "EAGER", "GHOST", "LABOR"];
 const hints = [
   "a complete episode or period of play, ending in a definite result",
   "a classifying phrase or name applied to a person or thing",
   "wanting to do or have something very much",
   "an apparition of a dead person which is believed to appear or become manifest to the living",
-  "Work, especially hard physical work"
+  "Work, especially hard physical work",
 ];
 
 let challenge_word;
 let incorrect_times = 0;
 let hint;
 
-function start(){
-    let index = Math.floor(Math.random() * 5);
-    console.log(index);
-    challenge_word = words[index];
-    hint = hints[index];
-    console.log(hint);
-    console.log(challenge_word);
-    document.getElementById("hint-display-div").innerHTML = hint;
+
+function printAlphabet(id) {
+  alert(id.id);
+  alert(challenge_word);
+  let char_array = Array.from(challenge_word);
+  //console.log(challenge_word);
+  let list = document.getElementById("character-list");
+  let li = document.querySelectorAll(".letter");
+
+  let i = 0;
+
+  if (char_array.includes(id.id)) {
+    while (i < li.length) {
+      for (let j = 0; j < char_array.length; j++) {
+        alert(li[i].textContent);
+        if (id.id === char_array[i] && li[i].textContent === "") {
+          alert("Inside true");
+          li[i].textContent = id.id;
+          document.getElementById(id.id).setAttribute("disabled", true);
+          i++;
+        } else if (li[i].textContent === "") {
+          li[i].textContent = "";
+          i++;
+        } else {
+          i++;
+        }
+      }
+    }
+  } else {
+    incorrect_times++;
+    console.log(incorrect_times);
+    if (incorrect_times <= 6) {
+      document.getElementById("incorrect_guess_no").innerHTML =
+        incorrect_times + "/6";
+      document.getElementById(id.id).setAttribute("disabled", true);
+    } else {
+      alert("You lose, GAME OVER");
+      const buttons = document.querySelectorAll(".keybutton");
+      buttons.forEach((button) => {
+        button.setAttribute("disabled", true);
+      });
+    }
+  }
+
+  callComputerTurn();
 }
-
-
