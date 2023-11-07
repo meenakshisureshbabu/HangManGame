@@ -34,6 +34,8 @@ let incorrect_times = 0;
 let hint;
 let random_alphabet;
 let keybuttons = document.querySelectorAll(".keybutton");
+let list = document.getElementById("character-list");
+let li = document.querySelectorAll(".letter");
 
 function start() {
   keybuttons.forEach((e) => {
@@ -59,12 +61,49 @@ function getrandomAlphabet() {
   // Convert the number to a character using the ASCII code
   let randomChar = String.fromCharCode(randomNum);
   // Return the random letter
-  return randomChar;
+  return randomChar.toUpperCase();
 }
 
 function callComputerTurn() {
   let chararray = getCharacterArray();
   console.log(chararray);
+  let id = getrandomAlphabet();
+  console.log(id);
+  let i = 0;
+  if (chararray.includes(id)) {
+    while (i < li.length) {
+      for (let j = 0; j < chararray.length; j++) {
+        alert(li[i].textContent);
+        if (id === chararray[i] && li[i].textContent === "") {
+          alert("Inside true");
+          li[i].textContent = id;
+          document.getElementById(id).setAttribute("disabled", true);
+          i++;
+        } else if (li[i].textContent === "") {
+          li[i].textContent = "";
+          i++;
+        } else {
+          i++;
+        }
+      }
+    }
+  } else {
+    incorrect_times++;
+    console.log(incorrect_times);
+    if (incorrect_times <= 6) {
+      document.getElementById("incorrect_guess_no").innerHTML =
+        incorrect_times + "/6";
+      document.getElementById(id).setAttribute("disabled", true);
+    } else {
+      alert("You lose, GAME OVER");
+      const buttons = document.querySelectorAll(".keybutton");
+      buttons.forEach((button) => {
+        button.setAttribute("disabled", true);
+      });
+    }
+  }
+
+
 }
 
 function getCharacterArray() {
@@ -74,10 +113,10 @@ function getCharacterArray() {
 function printAlphabet(id) {
   alert(id.id);
   alert(challenge_word);
-  let char_array = Array.from(challenge_word);
+  let char_array = getCharacterArray();
   //console.log(challenge_word);
-  let list = document.getElementById("character-list");
-  let li = document.querySelectorAll(".letter");
+//   let list = document.getElementById("character-list");
+//   let li = document.querySelectorAll(".letter");
 
   let i = 0;
 
