@@ -75,11 +75,17 @@ function callComputerTurn() {
 }
 
 function reset() {
-  incorrect_times = 0;
-  document.getElementById("incorrect_guess_no").innerHTML = "";
-  document.getElementById("hint-display-div").innerHTML = "";
-  for (let cnt = 0; cnt < li.length; cnt++) li[cnt].textContent = "";
-  onload();
+  if(confirm("Are you sure you want to reset?")){
+    alert("Please click Start button to play again!!")
+    incorrect_times = 0;
+    document.getElementById("incorrect_guess_no").innerHTML = "";
+    document.getElementById("hint-display-div").innerHTML = "";
+    for (let cnt = 0; cnt < li.length; cnt++) li[cnt].textContent = "";
+    onload();
+  }
+  else{
+    return;
+  }
   //start();
 }
 
