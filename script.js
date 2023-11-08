@@ -57,7 +57,6 @@ const human_player = new Player("YOU", 0);
 const comp_player = new Player("COMPUTER", 0);
 let pressedarray = [];
 let word_found = false;
-let hangmanelem;
 let right_word = 0;
 
 function start() {
@@ -137,7 +136,6 @@ function checkAlphabet(id, chararray, player) {
     } else {
       if (document.getElementById(id).getAttribute("disabled") == "true") {
         console.log("INSIDE PRESSE");
-        right_word--;
         return;
       }
       // } else {
@@ -178,14 +176,26 @@ function checkAlphabet(id, chararray, player) {
         computer_correct_times++;
         player.setPoints(computer_correct_times);
       }
+      
       console.log(
         "PLAYER POINTS::::::::::::::::::::::::::::::" + player.getPoints()
       );
+
+      // document.getElementById("yourscore").innerHTML = human_player.getPoints();
+      // document.getElementById("compscore").innerHTML = comp_player.getPoints();
       for (let cnt = 0; cnt < li.length; cnt++) {
         li[cnt].textContent = chararray[cnt];
       }
       disablebuttons();
       word_found = true;
+      if(confirm("Do you want to go to next word?")){
+        word_found = false;
+        right_word = 0;
+        start();
+      }
+      else{
+        reset();
+      }
       //reset();
     }
   } else {
@@ -234,4 +244,6 @@ function printAlphabet(id) {
   } else {
     return;
   }
+  document.getElementById("yourscore").innerHTML = human_player.getPoints();
+  document.getElementById("compscore").innerHTML = comp_player.getPoints();
 }
