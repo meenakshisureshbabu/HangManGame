@@ -59,6 +59,7 @@ let pressedarray = [];
 let word_found = false;
 let right_word = 0;
 
+
 function start() {
   for (let i = 0; i < hangmanarray.length; i++) {
     console.log(
@@ -72,14 +73,14 @@ function start() {
   console.log(index);
   challenge_word = words[index];
   hint = hints[index];
-  console.log(hint);
-  console.log(challenge_word);
+  //console.log(hint);
+  //console.log(challenge_word);
   document.getElementById("hint-display-div").innerHTML = hint;
 }
 
 function enableButtons() {
   keybuttons.forEach((e) => {
-    console.log(e.removeAttribute("disabled"));
+    e.removeAttribute("disabled");
   });
 }
 
@@ -180,23 +181,13 @@ function checkAlphabet(id, chararray, player) {
       console.log(
         "PLAYER POINTS::::::::::::::::::::::::::::::" + player.getPoints()
       );
-
-      // document.getElementById("yourscore").innerHTML = human_player.getPoints();
-      // document.getElementById("compscore").innerHTML = comp_player.getPoints();
       for (let cnt = 0; cnt < li.length; cnt++) {
         li[cnt].textContent = chararray[cnt];
       }
       disablebuttons();
       word_found = true;
-      if(confirm("Do you want to go to next word?")){
-        word_found = false;
-        right_word = 0;
-        start();
-      }
-      else{
-        reset();
-      }
-      //reset();
+      setTimeout(askNextword,1000);
+      
     }
   } else {
     incorrect_times++;
@@ -212,7 +203,7 @@ function checkAlphabet(id, chararray, player) {
         incorrect_times + "/6";
       document.getElementById(id).setAttribute("disabled", true);
     } else {
-      alert("GAME OVER");
+      alert("WORD NOT FOUND");
       document.getElementById("incorrect_guess_no").innerHTML =
         incorrect_times + "/6";
       hangmanelement.style.display = "none";
@@ -225,7 +216,30 @@ function checkAlphabet(id, chararray, player) {
       //   button.setAttribute("disabled", true);
       // });
       disablebuttons();
+      setTimeout(askNextword,1000);
     }
+  }
+}
+
+
+function askNextword(){
+  if(confirm("Do you want to go to next word?")){
+    word_found = false;
+    right_word = 0;
+    incorrect_times = 0;
+    start();
+  }
+  else{
+    if(human_player.getPoints() > comp_player.getPoints()){
+      alert("*******************YOU WON THE GAME****************")
+    }
+    else if (human_player.getPoints() == comp_player.getPoints()){
+      alert("****************** IT'S A TIE *************")
+    }
+    else{
+      alert("****************YOU LOST THE GAME****************")
+    }
+    reset();
   }
 }
 
