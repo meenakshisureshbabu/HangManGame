@@ -231,6 +231,7 @@ function checkAlphabet(id, chararray, player) {
       document.getElementById(id).setAttribute("disabled", true);
     } else {
       //alert("WORD NOT FOUND");
+      failsound.play();
       document.getElementById("incorrect_guess_no").innerHTML =
         incorrect_times + "/6";
       hangmanelement.style.display = "none";
