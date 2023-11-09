@@ -27,13 +27,21 @@ class Player {
   }
 }
 
-const words = ["GAMES", "LABEL", "EAGER", "GHOST", "LABOR"];
+const words = ["GAMES", "LABEL", "EAGER", "GHOST", "LABOR","BREAD","AGAIN","AFTER","AWARE","BAKER","BLAME","AVOID","COACH"];
 const hints = [
-  "HINT : a complete episode or period of play, ending in a definite result",
-  "HINT : a classifying phrase or name applied to a person or thing",
-  "HINT : wanting to do or have something very much",
-  "HINT : an apparition of a dead person which is believed to appear or become manifest to the living",
-  "HINT : Work, especially hard physical work",
+  "A complete episode or period of play, ending in a definite result",
+  "A classifying phrase or name applied to a person or thing",
+  "Wanting to do or have something very much",
+  "An apparition of a dead person which is believed to appear or become manifest to the living",
+  "Work, especially hard physical work",
+  "Food made of flour, water, and yeast or another leavening agent, mixed together and baked.",
+  "Once more; another time",
+  "Behind in place or position; following behind",
+  "Having knowledge; conscious; cognizant",
+  "A person who makes and sells bread, cake, etc."
+  ,"To hold responsible; find fault with; censure",
+  "to keep away from; keep clear of",
+  "a large, horse-drawn, four-wheeled carriage, usually enclosed"
 ];
 const hangmanarray = [
   "rightleg",
@@ -68,15 +76,13 @@ function start() {
   successsound = new sound("Success.mp3");
   failsound = new sound("failtone.mp3");
   for (let i = 0; i < hangmanarray.length; i++) {
-    console.log(
-      (document.getElementById(hangmanarray[i]).style.display = "block")
-    );
+      document.getElementById(hangmanarray[i]).style.display = "block";
   }
 
   enableButtons();
   for (let cnt = 0; cnt < li.length; cnt++) li[cnt].textContent = "";
   let index = Math.floor(Math.random() * 5);
-  console.log(index);
+  //console.log(index);
   challenge_word = words[index];
   hint = hints[index];
   //console.log(hint);
@@ -120,7 +126,7 @@ function callComputerTurn() {
   let id = getrandomAlphabet();
   //alert("COMPUTER TURN");
   //alert("Computer chose the alphabet : " + id);
-  console.log(id);
+  //console.log(id);
   checkAlphabet(id, chararray, comp_player);
   setTimeout(on, 1000, "USER");
 }
@@ -158,7 +164,7 @@ function checkAlphabet(id, chararray, player) {
       //player.setPoints(human_correct_times);
     } else {
       if (document.getElementById(id).getAttribute("disabled") == "true") {
-        console.log("INSIDE PRESSE");
+        //console.log("INSIDE PRESSED");
         return;
       }
       // } else {
@@ -185,10 +191,7 @@ function checkAlphabet(id, chararray, player) {
         }
       }
     }
-    console.log(
-      "-----------------------------RIGHT WORD---------------------------" +
-        right_word
-    );
+    //console.log("-----------------------------RIGHT WORD---------------------------" + right_word);
     if (right_word === 5) {
       successsound.play();
       //check for the complete word
@@ -206,7 +209,7 @@ function checkAlphabet(id, chararray, player) {
       }
 
       console.log(
-        "PLAYER POINTS::::::::::::::::::::::::::::::" + player.getPoints()
+        "PLAYER POINTS:" + player.getPoints()
       );
       for (let cnt = 0; cnt < li.length; cnt++) {
         li[cnt].textContent = chararray[cnt];

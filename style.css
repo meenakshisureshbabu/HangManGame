@@ -164,7 +164,7 @@ h4{
 }
 
 .list-div{
-    border: solid green;
+    /* border: solid green; */
     margin-left: 50px;
     height: 15%;
     display: flex;
@@ -279,7 +279,7 @@ li{
 
 .hint-display-div{
   font-size: 20px;
-  color: gold;
+  color: black;
   align-self: center;
   font-family: customfont;
   
