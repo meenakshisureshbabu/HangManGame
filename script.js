@@ -117,7 +117,7 @@ function callComputerTurn() {
   let chararray = getCharacterArray();
   //console.log(chararray);
   let id = getrandomAlphabet();
-  alert("COMPUTER TURN");
+  //alert("COMPUTER TURN");
   //alert("Computer chose the alphabet : " + id);
   console.log(id);
   checkAlphabet(id, chararray, comp_player);
@@ -275,6 +275,15 @@ function getCharacterArray() {
   return Array.from(challenge_word);
 }
 
+function on() {
+  document.getElementById("overlay").style.display = "block";
+  setTimeout(off,1000);
+}
+
+function off() {
+  document.getElementById("overlay").style.display = "none";
+}
+
 function printAlphabet(id) {
   //alert(id.id);
   //alert(challenge_word);
@@ -284,6 +293,7 @@ function printAlphabet(id) {
   document.getElementById("yourscore").innerHTML = human_player.getPoints();
   document.getElementById("compscore").innerHTML = comp_player.getPoints();
   if (incorrect_times < 6 && !word_found && right_word != 5) {
+    setTimeout(on,1000);
     setTimeout(callComputerTurn, 1000);
   } else {
     return;

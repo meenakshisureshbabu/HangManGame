@@ -285,6 +285,30 @@ li{
   
 }
 
+#overlay{
+  position: fixed;
+  display: none;
+  width: 50%;
+  height: 50%;
+  top: 10em;
+  left: 25em;
+  right: 10em;
+  bottom: 10em;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+
+#text{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 50px;
+  color: white;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+}
+
 .hint{
   /* border: solid black; */
   height: 2em;
