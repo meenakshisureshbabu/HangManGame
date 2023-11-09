@@ -130,6 +130,8 @@ function start() {
   //console.log(hint);
   //console.log(challenge_word);
   document.getElementById("hint-display-div").innerHTML = hint;
+  document.getElementById("incorrect_guess_no").innerHTML = "0/6";
+  //document.getElementById("round_no").innerHTML = "1/5";
 }
 
 function enableButtons() {
@@ -262,7 +264,7 @@ function checkAlphabet(id, chararray, player) {
       else{
         alert("GAME OVER");
         //cancelgame();
-        setTimeout(start, 1000);
+        setTimeout(reset, 1000);
       }
     }
   } else {
