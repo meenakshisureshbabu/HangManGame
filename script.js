@@ -29,11 +29,11 @@ class Player {
 
 const words = ["GAMES", "LABEL", "EAGER", "GHOST", "LABOR"];
 const hints = [
-  "a complete episode or period of play, ending in a definite result",
-  "a classifying phrase or name applied to a person or thing",
-  "wanting to do or have something very much",
-  "an apparition of a dead person which is believed to appear or become manifest to the living",
-  "Work, especially hard physical work",
+  "HINT : a complete episode or period of play, ending in a definite result",
+  "HINT : a classifying phrase or name applied to a person or thing",
+  "HINT : wanting to do or have something very much",
+  "HINT : an apparition of a dead person which is believed to appear or become manifest to the living",
+  "HINT : Work, especially hard physical work",
 ];
 const hangmanarray = [
   "rightleg",

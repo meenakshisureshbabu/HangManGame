@@ -99,6 +99,46 @@ img{
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
+.tooltip{
+  position: relative;
+}
+
+.tooltip .tooltiptext{
+  visibility: hidden;
+  position: absolute;
+  z-index: 1;
+
+}
+
+.tooltiptext{
+  width: 400px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.info{
+  font-size: 20px;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+#incorrect_guess_no{
+  color: white;
+  font-size: 20px;
+}
+
 
 .heading-para{
     font-size:2rem;

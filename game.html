@@ -11,7 +11,20 @@
       <div class="left-side-container">
         <div class="heading">
           <p class="heading-para">THE VANISHMAN GAME</p>
-          <div class="tooltip"><img src="info.png"></div>
+          <div class="tooltip"><img src="info.png">
+            <span class="tooltiptext">
+              <ul>
+              <li class="info">This is a two player game against Computer</li>
+              <li class="info">Press "Start Play" button to start the game</li>
+              <li class="info">Guess the word using the clue given and start typing a single letter at once</li>
+              <li class="info">Each player have 3 guesses</li>
+              <li class="info">Whoever found the word would be the winner in that round and they will be scored.</li>
+              <li class="info">When you want to quit the game, the winner of this game will be decided based on the scores.</li>
+              <li class="info">You can play any number of words.</li>
+              <li class="info">Always press Restart whenever you want to restart the new game.</li>
+            </ul>
+            </span>
+          </div>
           <p class="sub-heading-para">(5 letter words)</p>
           <div class="buttons">
             <button class="start" onclick="start()">START PLAY</button>
@@ -42,7 +55,7 @@
 
       <div class="right-side-container">
         <div class="incorrect-guesses-div">
-          <h4>Incorrect Guesses:</h4>
+          <h4>Incorrect Guesses</h4>
           <p id="incorrect_guess_no">0/6</p>
         </div>
         <div class="list-div">
@@ -54,6 +67,7 @@
             <li class="letter"></li>
           </ul>
         </div>
+        
         <div class="hint-div">
           <p class="hint-display-div" id="hint-display-div"></p>
         </div>
