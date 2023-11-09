@@ -123,7 +123,7 @@ function start() {
   document.querySelector(".reset").style.display = "block";
   enableButtons();
   for (let cnt = 0; cnt < li.length; cnt++) li[cnt].textContent = "";
-  let index = Math.floor(Math.random() * 11);
+  let index = Math.floor(Math.random() * 34);
   //console.log(index);
   challenge_word = words[index];
   hint = hints[index];
@@ -256,7 +256,14 @@ function checkAlphabet(id, chararray, player) {
       }
       disablebuttons();
       word_found = true;
-      setTimeout(askNextword, 1000);
+      if (round < 5){
+        setTimeout(askNextword, 1000);
+      }
+      else{
+        alert("GAME OVER");
+        //cancelgame();
+        setTimeout(start, 1000);
+      }
     }
   } else {
     wrongSound.play();
