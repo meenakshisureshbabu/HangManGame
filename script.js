@@ -27,7 +27,21 @@ class Player {
   }
 }
 
-const words = ["GAMES", "LABEL", "EAGER", "GHOST", "LABOR","BREAD","AGAIN","AFTER","AWARE","BAKER","BLAME","AVOID","COACH"];
+const words = [
+  "GAMES",
+  "LABEL",
+  "EAGER",
+  "GHOST",
+  "LABOR",
+  "BREAD",
+  "AGAIN",
+  "AFTER",
+  "AWARE",
+  "BAKER",
+  "BLAME",
+  "AVOID",
+  "COACH",
+];
 const hints = [
   "A complete episode or period of play, ending in a definite result",
   "A classifying phrase or name applied to a person or thing",
@@ -38,10 +52,10 @@ const hints = [
   "Once more; another time",
   "Behind in place or position; following behind",
   "Having knowledge; conscious; cognizant",
-  "A person who makes and sells bread, cake, etc."
-  ,"To hold responsible; find fault with; censure",
+  "A person who makes and sells bread, cake, etc.",
+  "To hold responsible; find fault with; censure",
   "to keep away from; keep clear of",
-  "a large, horse-drawn, four-wheeled carriage, usually enclosed"
+  "a large, horse-drawn, four-wheeled carriage, usually enclosed",
 ];
 const hangmanarray = [
   "rightleg",
@@ -67,6 +81,7 @@ let pressedarray = [];
 let word_found = false;
 let right_word = 0;
 let mySound;
+let round = 1;
 
 function start() {
   setTimeout(on, 1000, "USER");
@@ -76,12 +91,14 @@ function start() {
   successsound = new sound("Success.mp3");
   failsound = new sound("failtone.mp3");
   for (let i = 0; i < hangmanarray.length; i++) {
-      document.getElementById(hangmanarray[i]).style.display = "block";
+    document.getElementById(hangmanarray[i]).style.display = "block";
   }
-
+  document.querySelector(".reset").style.display = "block";
+  //document.getElementById("incorrect_guess_no").innerHTML = "0/6";
+  //document.getElementById("round_no").innerHTML = "1/5";
   enableButtons();
   for (let cnt = 0; cnt < li.length; cnt++) li[cnt].textContent = "";
-  let index = Math.floor(Math.random() * 5);
+  let index = Math.floor(Math.random() * 11);
   //console.log(index);
   challenge_word = words[index];
   hint = hints[index];
@@ -208,9 +225,7 @@ function checkAlphabet(id, chararray, player) {
         player.setPoints(computer_correct_times);
       }
 
-      console.log(
-        "PLAYER POINTS:" + player.getPoints()
-      );
+      console.log("PLAYER POINTS:" + player.getPoints());
       for (let cnt = 0; cnt < li.length; cnt++) {
         li[cnt].textContent = chararray[cnt];
       }
@@ -242,12 +257,15 @@ function checkAlphabet(id, chararray, player) {
       for (let cnt = 0; cnt < li.length; cnt++) {
         li[cnt].textContent = chararray[cnt];
       }
-      // const buttons = document.querySelectorAll(".keybutton");
-      // buttons.forEach((button) => {
-      //   button.setAttribute("disabled", true);
-      // });
       disablebuttons();
-      setTimeout(askNextword, 1000);
+      if (round < 5) {
+        console.log("ROUND: "+round);
+        setTimeout(askNextword, 1000);
+      } else {
+        alert("GAME OVER");
+        cancelgame();
+        setTimeout(start, 1000);
+      }
     }
   }
 }
@@ -257,23 +275,30 @@ function askNextword() {
     document.getElementById("yourscore").innerHTML = human_player.getPoints();
     document.getElementById("compscore").innerHTML = comp_player.getPoints();
     word_found = false;
+    round++;
     right_word = 0;
     incorrect_times = 0;
     document.getElementById("incorrect_guess_no").innerHTML = "0/6";
+    document.getElementById("round_no").innerHTML = round + "/5";
     start();
   } else {
-    if (human_player.getPoints() > comp_player.getPoints()) {
-      successsound.play();
-      alert("*******************YOU WON THE GAME****************");
-
-      //alert("Press start to play again!");
-    } else if (human_player.getPoints() == comp_player.getPoints()) {
-      alert("****************** IT'S A TIE *************");
-    } else {
-      wrongSound.play();
-      alert("****************YOU LOST THE GAME****************");
-    }
+    cancelgame();
     setTimeout(reset, 1000);
+  }
+}
+
+
+function cancelgame(){
+  if (human_player.getPoints() > comp_player.getPoints()) {
+    successsound.play();
+    alert("*******************YOU WON THE GAME****************");
+
+    //alert("Press start to play again!");
+  } else if (human_player.getPoints() == comp_player.getPoints()) {
+    alert("****************** IT'S A TIE *************");
+  } else {
+    wrongSound.play();
+    alert("****************YOU LOST THE GAME****************");
   }
 }
 
