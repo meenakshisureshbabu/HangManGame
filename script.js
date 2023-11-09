@@ -58,9 +58,10 @@ const comp_player = new Player("COMPUTER", 0);
 let pressedarray = [];
 let word_found = false;
 let right_word = 0;
-
+let mySound;
 
 function start() {
+  mySound = new sound("wrong-buzzer.mp3");
   for (let i = 0; i < hangmanarray.length; i++) {
     console.log(
       (document.getElementById(hangmanarray[i]).style.display = "block")
@@ -96,11 +97,26 @@ function getrandomAlphabet() {
   return randomChar.toUpperCase();
 }
 
+function sound(src) {
+  this.sound = document.createElement("audio");
+  this.sound.src = src;
+  this.sound.setAttribute("preload", "auto");
+  this.sound.setAttribute("controls", "none");
+  this.sound.style.display = "none";
+  document.body.appendChild(this.sound);
+  this.play = function(){
+      this.sound.play();
+  }
+  this.stop = function(){
+      this.sound.pause();
+  }    
+}
+
 function callComputerTurn() {
   let chararray = getCharacterArray();
   //console.log(chararray);
   let id = getrandomAlphabet();
-  alert("Computer chose the alphabet : " + id);
+  //alert("Computer chose the alphabet : " + id);
   console.log(id);
   checkAlphabet(id, chararray, comp_player);
 }
@@ -145,7 +161,7 @@ function checkAlphabet(id, chararray, player) {
       // }
     }
     console.log("POINTS FOR " + player.name + ":" + player.points);
-    alert("Gotcha! This alphabet is in the word");
+    //alert("Gotcha! This alphabet is in the word");
     while (i < li.length) {
       for (let j = 0; j < chararray.length; j++) {
         //alert(li[i].textContent);
@@ -177,6 +193,7 @@ function checkAlphabet(id, chararray, player) {
         computer_correct_times++;
         player.setPoints(computer_correct_times);
       }
+
       
       console.log(
         "PLAYER POINTS::::::::::::::::::::::::::::::" + player.getPoints()
@@ -190,10 +207,11 @@ function checkAlphabet(id, chararray, player) {
       
     }
   } else {
+    mySound.play();
     incorrect_times++;
     //console.log(incorrect_times);
 
-    alert("This alphabet is not in the word");
+    //alert("This alphabet is not in the word");
     let hangmanelement = document.querySelector(
       "." + hangmanarray[incorrect_times - 1]
     );
@@ -227,6 +245,7 @@ function askNextword(){
     word_found = false;
     right_word = 0;
     incorrect_times = 0;
+    document.getElementById("incorrect_guess_no").innerHTML = "";
     start();
   }
   else{
@@ -250,14 +269,15 @@ function getCharacterArray() {
 function printAlphabet(id) {
   //alert(id.id);
   //alert(challenge_word);
-  alert("You pressed :" + id.id);
+  //alert("You pressed :" + id.id);
   let char_array = getCharacterArray();
   checkAlphabet(id.id, char_array, human_player);
+  document.getElementById("yourscore").innerHTML = human_player.getPoints();
+  document.getElementById("compscore").innerHTML = comp_player.getPoints();
   if (incorrect_times < 6 && !word_found && right_word != 5) {
     setTimeout(callComputerTurn, 1000);
   } else {
     return;
   }
-  document.getElementById("yourscore").innerHTML = human_player.getPoints();
-  document.getElementById("compscore").innerHTML = comp_player.getPoints();
+  
 }
