@@ -288,10 +288,10 @@ li{
 #computeroverlay, #useroverlay{
   position: fixed;
   display: none;
-  width: 50%;
-  height: 50%;
-  top: 10em;
-  left: 25em;
+  width: 30%;
+  height: 30%;
+  top: 15em;
+  left: 30em;
   right: 10em;
   bottom: 10em;
   background-color: rgba(0,0,0,0.5);

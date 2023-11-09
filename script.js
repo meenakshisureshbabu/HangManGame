@@ -61,6 +61,7 @@ let right_word = 0;
 let mySound;
 
 function start() {
+  setTimeout(on, 1000, "USER");
   document.querySelector(".reset").removeAttribute("disabled");
   wrongSound = new sound("wrong-buzzer.mp3");
   rightsound = new sound("correct.mp3");
@@ -121,7 +122,7 @@ function callComputerTurn() {
   //alert("Computer chose the alphabet : " + id);
   console.log(id);
   checkAlphabet(id, chararray, comp_player);
-  setTimeout(on,1000,"USER");
+  setTimeout(on, 1000, "USER");
 }
 
 function reset() {
@@ -249,6 +250,8 @@ function checkAlphabet(id, chararray, player) {
 
 function askNextword() {
   if (confirm("Do you want to proceed to next word?")) {
+    document.getElementById("yourscore").innerHTML = human_player.getPoints();
+    document.getElementById("compscore").innerHTML = comp_player.getPoints();
     word_found = false;
     right_word = 0;
     incorrect_times = 0;
@@ -258,14 +261,15 @@ function askNextword() {
     if (human_player.getPoints() > comp_player.getPoints()) {
       successsound.play();
       alert("*******************YOU WON THE GAME****************");
-      alert("Press start to play again!");
+
+      //alert("Press start to play again!");
     } else if (human_player.getPoints() == comp_player.getPoints()) {
       alert("****************** IT'S A TIE *************");
     } else {
       wrongSound.play();
       alert("****************YOU LOST THE GAME****************");
     }
-    //reset();
+    setTimeout(reset, 1000);
   }
 }
 
@@ -297,10 +301,8 @@ function printAlphabet(id) {
   //alert("You pressed :" + id.id);
   let char_array = getCharacterArray();
   checkAlphabet(id.id, char_array, human_player);
-  document.getElementById("yourscore").innerHTML = human_player.getPoints();
-  document.getElementById("compscore").innerHTML = comp_player.getPoints();
   if (incorrect_times < 6 && !word_found && right_word != 5) {
-    setTimeout(on, 1000, "COMPUTER");
+    //setTimeout(on, 1000, "COMPUTER");
     setTimeout(callComputerTurn, 2000);
   } else {
     return;
