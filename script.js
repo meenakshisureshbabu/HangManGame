@@ -41,6 +41,10 @@ const words = [
   "BLAME",
   "AVOID",
   "COACH",
+  "CHEAP",
+  "FRUIT",
+  "DRESS","FIELD","GLASS","GUEST","CLOCK","MONEY","MAYOR","MAGIC","PEACE","NURSE","POWER","LEVEL","RIVER","QUIET","PRIZE","PLATE",
+  "SHAPE","TRUCK","URBAN","WOMAN","VOICE","ZEBRA","SPACE","TRAIN"
 ];
 const hints = [
   "A complete episode or period of play, ending in a definite result",
@@ -54,8 +58,31 @@ const hints = [
   "Having knowledge; conscious; cognizant",
   "A person who makes and sells bread, cake, etc.",
   "To hold responsible; find fault with; censure",
-  "to keep away from; keep clear of",
-  "a large, horse-drawn, four-wheeled carriage, usually enclosed",
+  "To keep away from; keep clear of",
+  "A large, horse-drawn, four-wheeled carriage, usually enclosed",
+  "Costing very little; relatively low in price; inexpensive",
+  "The developed ovary of a seed plant with its contents and accessory parts, as the pea pod, nut, tomato, or pineapple.",
+  "an outer garment for women and girls, consisting of bodice and skirt in one piece.","an expanse of open or cleared ground, especially a piece of land suitable or used for pasture or tillage.",
+  "any artificial or natural noncrystalline and transparent hard substance, such as fused borax, obsidian, or the like.",
+  "a person who spends some time at another person's home in some social activity, as a visit, dinner, or party.",
+  "an instrument for measuring and recording time",
+  "any circulating medium of exchange, including coins, paper money, and demand deposits.",
+  "the chief executive official, usually elected, of a city, village, or town.",
+  "the art of producing illusions as entertainment by the use of sleight of hand",
+  "the nonwarring condition of a nation, group of nations, or the world.",
+  "a person formally educated and trained in the care of the sick or infirm.",
+  "ability to do or act; capability of doing or accomplishing something",
+  "having no part higher than another; having a flat or even surface.",
+  "a natural stream of water of fairly large size flowing in a definite course or channel or series of diverging and converging channels.",
+  "making no noise or sound, especially no disturbing sound",
+  "a reward for victory or superiority, as in a contest or competition.",
+  "a shallow, usually circular dish, often of earthenware or porcelain, from which food is eaten.",
+  "the quality of a distinct object or body in having an external surface or outline of specific form or figure.",
+  "any of various wheeled frames used for transporting heavy objects.","living, located, or taking place in a city","an adult female person",
+  "the sound or sounds uttered through the mouth of living creatures, especially of human beings in speaking, shouting, singing, etc.",
+  "any of several horselike African mammals,a characteristic pattern of black or dark-brown stripes on a whitish background",
+  "the unlimited or incalculably great three-dimensional realm or expanse in which all material objects are located and all events occur.",
+  "a line or procession of persons, vehicles, animals, etc., traveling together"
 ];
 const hangmanarray = [
   "rightleg",
@@ -94,8 +121,6 @@ function start() {
     document.getElementById(hangmanarray[i]).style.display = "block";
   }
   document.querySelector(".reset").style.display = "block";
-  //document.getElementById("incorrect_guess_no").innerHTML = "0/6";
-  //document.getElementById("round_no").innerHTML = "1/5";
   enableButtons();
   for (let cnt = 0; cnt < li.length; cnt++) li[cnt].textContent = "";
   let index = Math.floor(Math.random() * 11);
