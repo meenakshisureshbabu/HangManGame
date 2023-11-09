@@ -108,9 +108,9 @@ function sound(src) {
   this.sound.setAttribute("controls", "none");
   this.sound.style.display = "none";
   document.body.appendChild(this.sound);
-  this.play = function(){
-      this.sound.play();
-  }
+  this.play = function () {
+    this.sound.play();
+  };
 }
 
 function callComputerTurn() {
@@ -121,11 +121,11 @@ function callComputerTurn() {
   //alert("Computer chose the alphabet : " + id);
   console.log(id);
   checkAlphabet(id, chararray, comp_player);
+  setTimeout(on,1000,"USER");
 }
 
 function reset() {
   if (confirm("Are you sure you want to end the game?")) {
-
     alert("Please click Start button to play again!!");
     incorrect_times = 0;
     document.getElementById("incorrect_guess_no").innerHTML = "";
@@ -191,7 +191,11 @@ function checkAlphabet(id, chararray, player) {
     if (right_word === 5) {
       successsound.play();
       //check for the complete word
-      alert("*******************" + player.name + "WON THIS ROUND*******************");
+      alert(
+        "*******************" +
+          player.name +
+          "WON THIS ROUND*******************"
+      );
       if (player.name === "YOU") {
         human_correct_times++;
         player.setPoints(human_correct_times);
@@ -200,7 +204,6 @@ function checkAlphabet(id, chararray, player) {
         player.setPoints(computer_correct_times);
       }
 
-      
       console.log(
         "PLAYER POINTS::::::::::::::::::::::::::::::" + player.getPoints()
       );
@@ -209,8 +212,7 @@ function checkAlphabet(id, chararray, player) {
       }
       disablebuttons();
       word_found = true;
-      setTimeout(askNextword,1000);
-      
+      setTimeout(askNextword, 1000);
     }
   } else {
     wrongSound.play();
@@ -227,7 +229,7 @@ function checkAlphabet(id, chararray, player) {
         incorrect_times + "/6";
       document.getElementById(id).setAttribute("disabled", true);
     } else {
-      alert("WORD NOT FOUND");
+      //alert("WORD NOT FOUND");
       document.getElementById("incorrect_guess_no").innerHTML =
         incorrect_times + "/6";
       hangmanelement.style.display = "none";
@@ -240,32 +242,28 @@ function checkAlphabet(id, chararray, player) {
       //   button.setAttribute("disabled", true);
       // });
       disablebuttons();
-      setTimeout(askNextword,1000);
+      setTimeout(askNextword, 1000);
     }
   }
 }
 
-
-function askNextword(){
-  if(confirm("Do you want to proceed to next word?")){
+function askNextword() {
+  if (confirm("Do you want to proceed to next word?")) {
     word_found = false;
     right_word = 0;
     incorrect_times = 0;
     document.getElementById("incorrect_guess_no").innerHTML = "0/6";
     start();
-  }
-  else{
-    if(human_player.getPoints() > comp_player.getPoints()){
+  } else {
+    if (human_player.getPoints() > comp_player.getPoints()) {
       successsound.play();
-      alert("*******************YOU WON THE GAME****************")
-      alert("Press start to play again!")
-    }
-    else if (human_player.getPoints() == comp_player.getPoints()){
-      alert("****************** IT'S A TIE *************")
-    }
-    else{
+      alert("*******************YOU WON THE GAME****************");
+      alert("Press start to play again!");
+    } else if (human_player.getPoints() == comp_player.getPoints()) {
+      alert("****************** IT'S A TIE *************");
+    } else {
       wrongSound.play();
-      alert("****************YOU LOST THE GAME****************")
+      alert("****************YOU LOST THE GAME****************");
     }
     //reset();
   }
@@ -275,13 +273,22 @@ function getCharacterArray() {
   return Array.from(challenge_word);
 }
 
-function on() {
-  document.getElementById("overlay").style.display = "block";
-  setTimeout(off,1000);
+function on(user) {
+  if (user === "COMPUTER") {
+    document.getElementById("computeroverlay").style.display = "block";
+    setTimeout(off, 1000, "COMPUTER");
+  } else {
+    document.getElementById("useroverlay").style.display = "block";
+    setTimeout(off, 1000, "USER");
+  }
 }
 
-function off() {
-  document.getElementById("overlay").style.display = "none";
+function off(user) {
+  if (user === "COMPUTER") {
+    document.getElementById("computeroverlay").style.display = "none";
+  } else {
+    document.getElementById("useroverlay").style.display = "none";
+  }
 }
 
 function printAlphabet(id) {
@@ -293,10 +300,9 @@ function printAlphabet(id) {
   document.getElementById("yourscore").innerHTML = human_player.getPoints();
   document.getElementById("compscore").innerHTML = comp_player.getPoints();
   if (incorrect_times < 6 && !word_found && right_word != 5) {
-    setTimeout(on,1000);
-    setTimeout(callComputerTurn, 1000);
+    setTimeout(on, 1000, "COMPUTER");
+    setTimeout(callComputerTurn, 2000);
   } else {
     return;
   }
-  
 }

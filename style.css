@@ -285,7 +285,7 @@ li{
   
 }
 
-#overlay{
+#computeroverlay, #useroverlay{
   position: fixed;
   display: none;
   width: 50%;
@@ -299,11 +299,11 @@ li{
   cursor: pointer;
 }
 
-#text{
+#computertext, #usertext{
   position: absolute;
   top: 50%;
   left: 50%;
-  font-size: 50px;
+  font-size: 20px;
   color: white;
   transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
