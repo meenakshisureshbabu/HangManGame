@@ -3,12 +3,17 @@
     padding: 0px;
 }
 
+body{
+  background-image: url("images.jpeg");
+   background-repeat: no-repeat;
+   background-size: cover;
+}
 
 
 .container{
     display: flex;
     justify-content: space-evenly;
-    border: solid blue;
+    /* border: solid blue; */
     margin: 5px 5px 5px 5px;
     height: 675px;
 }
@@ -17,7 +22,7 @@
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    border: solid red;
+    /* border: solid red; */
     width: 50%;
     height: 650px;
     margin: 5px;
@@ -26,7 +31,7 @@
 .right-side-container{
     display: flex;
     flex-wrap: wrap;
-    border: solid purple;
+    /* border: solid purple; */
     width: 50%;
     height: 650px;
     margin: 5px;
@@ -57,6 +62,7 @@
     height: 100px;
     padding-top: 50px;
     width: 60%;
+    color: white;
 }
 
 .buttons{
@@ -89,8 +95,13 @@
 
 }
 
+h4{
+  color:white;
+  font-size: 20px;
+}
+
 .list-div{
-    border: solid green;
+    /* border: solid green; */
     margin-left: 50px;
     margin-top: 50px;
     height: 15%;
@@ -112,7 +123,7 @@ li{
 }
 
 .hint-div{
-    border: solid red;
+    border: solid black;
     overflow-wrap: break-word;
     width: 600px;
     height: 15%;
@@ -120,7 +131,7 @@ li{
 }
 
 .keyboard-div{
-    border: solid darkorange;
+    /* border: solid darkorange; */
     width: 700px;
     height: 50%;
     margin-left: 15px;
@@ -135,6 +146,7 @@ li{
     cursor: pointer;
     font-size: 13px;
     border-radius: 12px;
+    /* background-image: linear-gradient(to right,green,white); */
 }
 
 .alphabet-button-div{
@@ -207,6 +219,15 @@ li{
     transform-origin: center bottom;
   }
 
+  @keyframes rock {
+    0% {
+      transform: rotate(-10deg);
+    }
+    100% {
+      transform: rotate(10deg);
+    }
+  }
+
   .body {
     width: 2px;
     height: 100px;
@@ -244,6 +265,15 @@ li{
     transform-origin: 100%;
   }
 
+  @keyframes wave {
+    0% {
+      transform: rotate(-20deg);
+    }
+    100% {
+      transform: rotate(40deg);
+    }
+  }
+
   .rightarm {
     width: 100px;
     height: 2px;
@@ -256,6 +286,26 @@ li{
     animation: wave2 1s alternate infinite ease-in-out;
     transform-origin: 0%;
   }
+
+  @keyframes wave2 {
+  0% {
+    transform: rotate(20deg);
+  }
+  100% {
+    transform: rotate(-40deg);
+  }
+}
+
+.leftfoot {
+  width: 30px;
+  height: 6px;
+  border: 3px solid black;
+  display: block;
+  position: absolute;
+  top: 270px;
+  left: 110px;
+  transform: rotate(8deg);
+}
 
   .rightleg {
     width: 3px;
