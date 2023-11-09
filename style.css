@@ -9,6 +9,11 @@ body{
    background-size: cover;
 }
 
+img{
+  width: 30px;
+  height: 30px;
+}
+
 
 .container{
     display: flex;
@@ -85,6 +90,16 @@ body{
     cursor: pointer;
 }
 
+.reset:hover{
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+
+.start:hover{
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+
 .heading-para{
     font-size:2rem;
 }
@@ -138,6 +153,11 @@ li{
     margin-left: 15px;
 }
 
+#yourscore, #compscore{
+  color: white;
+  font-size: 20px;
+}
+
 .keybutton{
     border: none;
     padding: 20px;
@@ -148,6 +168,11 @@ li{
     font-size: 13px;
     border-radius: 12px;
     /* background-image: linear-gradient(to right,green,white); */
+}
+
+.keybutton:hover{
+  background-color: green;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 .alphabet-button-div{
@@ -203,6 +228,12 @@ li{
     border-bottom: 3px solid;
     font-size: 25px;
     margin-bottom: 20px;
+}
+
+.hint-display-div{
+  font-size: 25px;
+  color: gold;
+  align-self: center;
 }
 
 
