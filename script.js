@@ -61,7 +61,10 @@ let right_word = 0;
 let mySound;
 
 function start() {
-  mySound = new sound("wrong-buzzer.mp3");
+  document.querySelector(".reset").removeAttribute("disabled");
+  wrongSound = new sound("wrong-buzzer.mp3");
+  rightsound = new sound("correct.mp3");
+  successsound = new sound("Success.mp3");
   for (let i = 0; i < hangmanarray.length; i++) {
     console.log(
       (document.getElementById(hangmanarray[i]).style.display = "block")
@@ -144,6 +147,7 @@ function checkAlphabet(id, chararray, player) {
   let i = 0;
   pressedarray.push(id);
   if (chararray.includes(id)) {
+    rightsound.play();
     console.log("HHHHHHHHHH" + right_word);
     if (player.name === "YOU") {
       //human_correct_times++;
@@ -182,8 +186,9 @@ function checkAlphabet(id, chararray, player) {
         right_word
     );
     if (right_word === 5) {
+      successsound.play();
       //check for the complete word
-      alert("*******************" + player.name + "WON*******************");
+      alert("*******************" + player.name + "WON THIS ROUND*******************");
       if (player.name === "YOU") {
         human_correct_times++;
         player.setPoints(human_correct_times);
@@ -205,7 +210,7 @@ function checkAlphabet(id, chararray, player) {
       
     }
   } else {
-    mySound.play();
+    wrongSound.play();
     incorrect_times++;
     //console.log(incorrect_times);
 
@@ -248,15 +253,18 @@ function askNextword(){
   }
   else{
     if(human_player.getPoints() > comp_player.getPoints()){
+      successsound.play();
       alert("*******************YOU WON THE GAME****************")
+      alert("Press start to play again!")
     }
     else if (human_player.getPoints() == comp_player.getPoints()){
       alert("****************** IT'S A TIE *************")
     }
     else{
+      wrongSound.play();
       alert("****************YOU LOST THE GAME****************")
     }
-    reset();
+    //reset();
   }
 }
 

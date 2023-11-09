@@ -13,17 +13,17 @@
           <p class="heading-para">THE VANISHMAN GAME</p>
           <p class="sub-heading-para">(5 letter words)</p>
           <div class="buttons">
-            <button class="start" onclick="start()">START</button>
-            <button class="reset" onclick="reset()">RESET</button>
+            <button class="start" onclick="start()">START PLAY</button>
+            <button class="reset" onclick="reset()" disabled="true">RESET</button>
           </div>
         </div>
 
         <div class="status">
           <div class="score">
             <h4>Your Score:</h4>
-            <p id="yourscore"></p>
+            <p id="yourscore">0</p>
             <h4>Computer Score:</h4>
-            <p id="compscore"></p>
+            <p id="compscore">0</p>
           </div>
 
           <div class="hangmanstickdiv">
@@ -42,7 +42,7 @@
       <div class="right-side-container">
         <div class="incorrect-guesses-div">
           <h4>Incorrect Guesses:</h4>
-          <p id="incorrect_guess_no"></p>
+          <p id="incorrect_guess_no">0/6</p>
         </div>
         <div class="list-div">
           <ul class="guessing-word" id="character-list">
