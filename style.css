@@ -5,7 +5,8 @@
 
 @font-face{
   font-family: customfont;
-  src:url("CfBlackboardPersonalRegular-AKPg.ttf")
+  src:url("CfBlackboardPersonalRegular-AKPg.ttf");
+  unicode-range: U+20-21, U+3F, U+41-5A, U+61-7A;
 }
 
 body{
@@ -163,9 +164,8 @@ h4{
 }
 
 .list-div{
-    /* border: solid green; */
+    border: solid green;
     margin-left: 50px;
-    margin-top: 50px;
     height: 15%;
     display: flex;
     justify-content: center;
@@ -190,6 +190,7 @@ li{
     width: 600px;
     height: 15%;
     margin-left: 50px;
+    margin-top: 20px;
 }
 
 .keyboard-div{
@@ -277,9 +278,22 @@ li{
 }
 
 .hint-display-div{
-  font-size: 25px;
+  font-size: 20px;
   color: gold;
   align-self: center;
+  font-family: customfont;
+  
+}
+
+.hint{
+  /* border: solid black; */
+  height: 2em;
+  width: 10em;
+  margin-left: 3em;
+  font-size: 20px;
+  margin-top: 2em;
+  color: white;
+  font-family: customfont;
 }
 
 
