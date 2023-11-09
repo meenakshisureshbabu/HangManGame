@@ -82,6 +82,7 @@ body{
     border: none;
     background-color: black;
     color: white;
+    cursor: pointer;
 }
 
 .heading-para{

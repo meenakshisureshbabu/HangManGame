@@ -107,15 +107,13 @@ function sound(src) {
   this.play = function(){
       this.sound.play();
   }
-  this.stop = function(){
-      this.sound.pause();
-  }    
 }
 
 function callComputerTurn() {
   let chararray = getCharacterArray();
   //console.log(chararray);
   let id = getrandomAlphabet();
+  alert("COMPUTER TURN");
   //alert("Computer chose the alphabet : " + id);
   console.log(id);
   checkAlphabet(id, chararray, comp_player);
@@ -241,11 +239,11 @@ function checkAlphabet(id, chararray, player) {
 
 
 function askNextword(){
-  if(confirm("Do you want to go to next word?")){
+  if(confirm("Do you want to proceed to next word?")){
     word_found = false;
     right_word = 0;
     incorrect_times = 0;
-    document.getElementById("incorrect_guess_no").innerHTML = "";
+    document.getElementById("incorrect_guess_no").innerHTML = "0/6";
     start();
   }
   else{
