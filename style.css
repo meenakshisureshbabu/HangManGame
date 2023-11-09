@@ -3,6 +3,11 @@
     padding: 0px;
 }
 
+@font-face{
+  font-family: customfont;
+  src:url("CfBlackboardPersonalRegular-AKPg.ttf")
+}
+
 body{
   background-image: url("images.jpeg");
    background-repeat: no-repeat;
@@ -142,6 +147,7 @@ img{
 
 .heading-para{
     font-size:2rem;
+    font-family: customfont;
 }
 .sub-heading-para{
     font-size: 1rem;
