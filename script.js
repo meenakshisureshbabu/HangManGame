@@ -65,6 +65,7 @@ function start() {
   wrongSound = new sound("wrong-buzzer.mp3");
   rightsound = new sound("correct.mp3");
   successsound = new sound("Success.mp3");
+  failsound = new sound("failtone.mp3");
   for (let i = 0; i < hangmanarray.length; i++) {
     console.log(
       (document.getElementById(hangmanarray[i]).style.display = "block")
@@ -123,12 +124,14 @@ function callComputerTurn() {
 }
 
 function reset() {
-  if (confirm("Are you sure you want to reset?")) {
+  if (confirm("Are you sure you want to end the game?")) {
+
     alert("Please click Start button to play again!!");
     incorrect_times = 0;
     document.getElementById("incorrect_guess_no").innerHTML = "";
     document.getElementById("hint-display-div").innerHTML = "";
     for (let cnt = 0; cnt < li.length; cnt++) li[cnt].textContent = "";
+    failsound.play();
     window.location.reload();
     //remove the entire stick figure divs
   } else {
