@@ -131,7 +131,7 @@ function start() {
   //console.log(challenge_word);
   document.getElementById("hint-display-div").innerHTML = hint;
   document.getElementById("incorrect_guess_no").innerHTML = "0/6";
-  //document.getElementById("round_no").innerHTML = "1/5";
+  document.getElementById("round_no").innerHTML = round + "/5";
 }
 
 function enableButtons() {
@@ -263,8 +263,9 @@ function checkAlphabet(id, chararray, player) {
       }
       else{
         alert("GAME OVER");
-        //cancelgame();
-        setTimeout(reset, 1000);
+        cancelgame();
+        window.location.reload();
+        //setTimeout(reset, 1000);
       }
     }
   } else {
@@ -298,7 +299,9 @@ function checkAlphabet(id, chararray, player) {
       } else {
         alert("GAME OVER");
         cancelgame();
-        setTimeout(start, 1000);
+        round = 1;
+        window.location.reload();
+        //setTimeout(start, 1000);
       }
     }
   }
