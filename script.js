@@ -43,8 +43,30 @@ const words = [
   "COACH",
   "CHEAP",
   "FRUIT",
-  "DRESS","FIELD","GLASS","GUEST","CLOCK","MONEY","MAYOR","MAGIC","PEACE","NURSE","POWER","LEVEL","RIVER","QUIET","PRIZE","PLATE",
-  "SHAPE","TRUCK","URBAN","WOMAN","VOICE","ZEBRA","SPACE","TRAIN"
+  "DRESS",
+  "FIELD",
+  "GLASS",
+  "GUEST",
+  "CLOCK",
+  "MONEY",
+  "MAYOR",
+  "MAGIC",
+  "PEACE",
+  "NURSE",
+  "POWER",
+  "LEVEL",
+  "RIVER",
+  "QUIET",
+  "PRIZE",
+  "PLATE",
+  "SHAPE",
+  "TRUCK",
+  "URBAN",
+  "WOMAN",
+  "VOICE",
+  "ZEBRA",
+  "SPACE",
+  "TRAIN",
 ];
 const hints = [
   "A complete episode or period of play, ending in a definite result",
@@ -62,7 +84,8 @@ const hints = [
   "A large, horse-drawn, four-wheeled carriage, usually enclosed",
   "Costing very little; relatively low in price; inexpensive",
   "The developed ovary of a seed plant with its contents and accessory parts, as the pea pod, nut, tomato, or pineapple.",
-  "an outer garment for women and girls, consisting of bodice and skirt in one piece.","an expanse of open or cleared ground, especially a piece of land suitable or used for pasture or tillage.",
+  "an outer garment for women and girls, consisting of bodice and skirt in one piece.",
+  "an expanse of open or cleared ground, especially a piece of land suitable or used for pasture or tillage.",
   "any artificial or natural noncrystalline and transparent hard substance, such as fused borax, obsidian, or the like.",
   "a person who spends some time at another person's home in some social activity, as a visit, dinner, or party.",
   "an instrument for measuring and recording time",
@@ -78,11 +101,13 @@ const hints = [
   "a reward for victory or superiority, as in a contest or competition.",
   "a shallow, usually circular dish, often of earthenware or porcelain, from which food is eaten.",
   "the quality of a distinct object or body in having an external surface or outline of specific form or figure.",
-  "any of various wheeled frames used for transporting heavy objects.","living, located, or taking place in a city","an adult female person",
+  "any of various wheeled frames used for transporting heavy objects.",
+  "living, located, or taking place in a city",
+  "an adult female person",
   "the sound or sounds uttered through the mouth of living creatures, especially of human beings in speaking, shouting, singing, etc.",
   "any of several horselike African mammals,a characteristic pattern of black or dark-brown stripes on a whitish background",
   "the unlimited or incalculably great three-dimensional realm or expanse in which all material objects are located and all events occur.",
-  "a line or procession of persons, vehicles, animals, etc., traveling together"
+  "a line or procession of persons, vehicles, animals, etc., traveling together",
 ];
 const hangmanarray = [
   "rightleg",
@@ -254,10 +279,9 @@ function checkAlphabet(id, chararray, player) {
       }
       disablebuttons();
       word_found = true;
-      if (round < 5){
+      if (round < 5) {
         setTimeout(askNextword, 1000);
-      }
-      else{
+      } else {
         alert("GAME OVER");
         cancelgame();
         window.location.reload();
@@ -290,7 +314,7 @@ function checkAlphabet(id, chararray, player) {
       }
       disablebuttons();
       if (round < 5) {
-        console.log("ROUND: "+round);
+        console.log("ROUND: " + round);
         setTimeout(askNextword, 1000);
       } else {
         alert("GAME OVER");
@@ -320,8 +344,7 @@ function askNextword() {
   }
 }
 
-
-function cancelgame(){
+function cancelgame() {
   if (human_player.getPoints() > comp_player.getPoints()) {
     successsound.play();
     alert("*******************YOU WON THE GAME****************");
