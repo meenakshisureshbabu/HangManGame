@@ -381,13 +381,10 @@ function off(user) {
 }
 
 function printAlphabet(id) {
-  //alert(id.id);
-  //alert(challenge_word);
-  //alert("You pressed :" + id.id);
+  
   let char_array = getCharacterArray();
   checkAlphabet(id.id, char_array, human_player);
   if (incorrect_times < 6 && !word_found && right_word != 5) {
-    //setTimeout(on, 1000, "COMPUTER");
     setTimeout(callComputerTurn, 2000);
   } else {
     return;
