@@ -127,6 +127,8 @@ img{
 
 .info{
   font-size: 20px;
+  font-family: customfont;
+  color: black;
 }
 
 .tooltip .tooltiptext::after {
