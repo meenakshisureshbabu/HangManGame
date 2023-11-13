@@ -2,24 +2,26 @@
 ------------------------------------------------------------------------------------------------------------------------
 
 1. Two Player game - Player 1 Vs Computer (All words are 5 letter words and they will be randomly chosen)
-2. Totally there will be 6 chances to find the word.(Each 3 chances)
-3. There will be a hint displayed on the screen.
-4. There will be a display of man dancing at the beginning of the game.
-5. If there is any wrong guess, the Incorrect guess will be incremented and the hangman body parts will start disappearing. Slowly for each wrong guess, the stick hands and stick legs will disappear. After the 6 incorrect guesses, the hangman will be vanished and the game is over. 
-6. Then the game will be restarted again with the new word.
+2. There will be 5 rounds.
+3. Totally there will be 6 chances to find each word.(Each 3 chances)
+4. There will be a hint displayed on the screen.
+5. There will be a display of man dancing at the beginning of the game.
+6. If there is any wrong guess, the Incorrect guess will be incremented and the hangman body parts will start disappearing. Slowly for each wrong guess, the stick hands and stick legs will disappear. After the 6 incorrect guesses, the hangman will be vanished and the next round will start. 
 7. If the letter guessed is right, then that letter will be showed up in all the blanks wherever it belongs to and the points will be incremented for the player(either computer or player).
 8. Whoever found the word first, that player is the winner.
 9. The player can reset the game if he wants to discontinue.
-10. If both the player didn't found the word, the game is tie and the game will be reset once again with the new word.
+10. If both the player didn't found the word, there will be no points assigned to any player.
+11. At the end of the 5th round, the game winner will be decided based on the score whoever got the highest score. If both the players are on the same points, the game is a tie.
 
 
 Screen : 
 
-There will be a PLAY, RESET buttons on the top
+There will be a START PLAY, END GAME buttons on the top
 In the left side section, the stick man will be showed.
 In the right side sections the blanks will be shown and a hint also will be displayed for that word
 Alphabet keys will be shown on the right side and the users will be able to press the alphabet buttons 
 the number of incorrect guess will also be displayed on the screen
+the number of rounds will also be displayed on the top.
 
 
 HOW TO PLAY:
