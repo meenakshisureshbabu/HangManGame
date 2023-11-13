@@ -123,7 +123,7 @@ function start() {
   document.querySelector(".reset").style.display = "block";
   enableButtons();
   for (let cnt = 0; cnt < li.length; cnt++) li[cnt].textContent = "";
-  let index = Math.floor(Math.random() * 34);
+  let index = Math.floor(Math.random() * 35) + 0;
   //console.log(index);
   challenge_word = words[index];
   hint = hints[index];
