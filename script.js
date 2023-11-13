@@ -107,7 +107,7 @@ const comp_player = new Player("COMPUTER", 0);
 let pressedarray = [];
 let word_found = false;
 let right_word = 0;
-let mySound;
+//let mySound;
 let round = 1;
 
 function start() {
@@ -202,7 +202,7 @@ function checkAlphabet(id, chararray, player) {
   pressedarray.push(id);
   if (chararray.includes(id)) {
     rightsound.play();
-    console.log("HHHHHHHHHH" + right_word);
+    //console.log("RIGHT WORD::" + right_word);
     if (player.name === "YOU") {
       //human_correct_times++;
       //player.setPoints(human_correct_times);
@@ -211,10 +211,6 @@ function checkAlphabet(id, chararray, player) {
         //console.log("INSIDE PRESSED");
         return;
       }
-      // } else {
-      //   computer_correct_times++;
-      //   player.setPoints(computer_correct_times);
-      // }
     }
     console.log("POINTS FOR " + player.name + ":" + player.points);
     //alert("Gotcha! This alphabet is in the word");
